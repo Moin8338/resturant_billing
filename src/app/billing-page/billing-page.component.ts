@@ -28,7 +28,8 @@ export class BillingPageComponent implements OnInit {
   ItemsOnCategory!: any;
   searchKeyByCategory!: any;
   searchKeyByItemName!: any;
-  categoryName!: any;
+  categoryName!: any; 
+  
   table: any;
   cName!: any;
   cAddress!: any;
@@ -36,8 +37,8 @@ export class BillingPageComponent implements OnInit {
   show = true;
 
 
-  ngOnInit() {
-    this.categories = this.itemService.getAllItem();
+  async ngOnInit() : Promise<void> {
+    this.categories = await this.itemService.getAllItem();
     this.categoryItems = this.categories[0].items;
     this.ItemsOnCategory = this.categories[0].items;
     this.categoryName = this.categories[0].name;

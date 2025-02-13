@@ -1,12 +1,12 @@
-<section class="dashboard-layout">
+<!-- <section class="dashboard-layout">
     <div class="dashboard-layout">
-        <div class="container">
+        <div class="container"> -->
 
             <!-- Dashboard Layout -->
 
             <!-- sidebar section -->
 
-            <div class="sidebar" id="sidebar" data-mobile-menu>
+            <!-- <div class="sidebar" id="sidebar" data-mobile-menu>
                 <div class="open-close-btn-section">
                     <div>
                         <ion-icon class="close-btn" data-mobile-menu-close-btn name="close-outline"></ion-icon>
@@ -27,76 +27,55 @@
                     </ul>
                 </div>
             </div>
-            <div class="main-content">
-                <!----------- top-header -->
-                <div class="top-header">
-                    <div class="indesktop">
-                        <ion-icon class="open-btn" data-mobile-menu-open-btn name="grid-outline"></ion-icon>
-                        <div class="searchbar">
-                            <input type="text" name="" id="" placeholder="Search Here..">
-                            <button><ion-icon name="search"></ion-icon></button>
-                        </div>
-                        <div class="logo">
-                            <h1>logo</h1>
-                        </div>
-                    </div>
-                    <div class="inmobile">
-                        <input type="text" name="" id="" placeholder="Search Here..">
-                        <button><ion-icon name="search"></ion-icon></button>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="table-group">
-                        <div>
-                            <div class="head">
-                                <h1>Table View</h1>
-                                <div class="btn-group">
-                                    <select name="shortingValue" id="" class="shorting"
-                                        (change)="shortByStatus($event)">
-                                        <option name="shortingValue" value="" selected disabled>Sort By</option>
-                                        <option name="shortingValue" value="Blank">Blank Table</option>
-                                        <option name="shortingValue" value="Running">Running Table</option>
-                                        <option name="shortingValue" value="Paid">Paid Table</option>
-                                        <option name="shortingValue" value="KOT">KOT Table</option>
-                                        <option name="shortingValue" value="All">All Table</option>
-
-
-                                    </select>
-                                    <button class="btn"
-                                        style="display: flex;align-items: center;padding: .6rem 1rem;cursor: pointer;"
-                                        (contextmenu)="onRightClick($event)" (click)="addTable()">
-                                        <ion-icon name="add-outline"
-                                            style="font-size: 1.2rem;margin-right: .5rem;"></ion-icon>
-                                        <span>Add Table</span></button>
-                                </div>
-                            </div>
-
-                            <div class="table-identity">
-                                <ul>
-                                    <li><ion-icon name="ellipse"></ion-icon><span>Blank Table</span></li>
-                                    <li><ion-icon name="ellipse"></ion-icon><span>Running Table</span></li>
-                                    <li><ion-icon name="ellipse"></ion-icon><span>Paid Table</span></li>
-                                    <li><ion-icon name="ellipse"></ion-icon><span>Unpaid Table</span></li>
-                                    <li><ion-icon name="ellipse"></ion-icon><span>KOT Table</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tables">
-                            <a class="contextMenu" *ngFor="let item of filtredTables;let i=index"
-                                [href]="'/billing/'+(item.id)" #tooltip="matTooltip" [matTooltip]="item.status"
-                                matTooltipPosition="above">
-                                <div class="table" [style]="'background-color :'+item.color"
-                                    data-tooltip="I found what I need. And it's not friends, it's things."
-                                    data-tooltip-pos="right" data-tooltip-length="medium">
-                                    <h1>{{item.id}}</h1>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+           <router-outlet></router-outlet>
         </div>
     </div>
-</section>
+</section> -->
+
+<!-- <section id = "bdy">
+    <div class="main-container">
+        <div class="sidebar">
+            <div class = "sidebar-container">
+                <div class="hamburger">|-|</div>
+                <div class = "logo">
+                    <img src="./../../assets/images/resturant_logo.png" alt="" srcset="">
+                </div>
+                <div>
+                    <ul class="menu">
+                        <li class="menu-item">Dashboard</li>
+                        <li class="menu-item">Manage Item</li>
+                        <li class="menu-item">Manage Profile</li>
+                        <li class="menu-item">Customer Data</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <main class="content">
+            <div class = "content-container">
+                 <h1>main area</h1>
+            </div>
+        </main>
+    </div>
+</section> -->
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened="true">
+         <div class = "sidebar-container">
+        <div class = "logo">
+            <img src="./../../assets/images/resturant_logo.png" alt="" srcset="" class="imgBrand">
+        </div>
+        <div>
+            <ul class="menu">
+                <li class="menu-item" routerLink="">Dashboard</li>
+                <li class="menu-item" routerLink="/Category">Category Master</li>
+                <li class="menu-item" routerLink="/ManageItem">Manage Item</li>
+                <li class="menu-item" routerLink="/ManageProfile">Manage Profile</li>
+                <li class="menu-item" routerLink="/CustomerData">Customer Data</li>
+            </ul>
+        </div>
+    </div>
+</mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>

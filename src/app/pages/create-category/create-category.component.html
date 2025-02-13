@@ -1,0 +1,19 @@
+<section class="customer-detail">
+    <div class="container">
+        <div class="header">
+            <h2>customer Detail</h2>
+            <!-- <ion-icon name="close-outline"></ion-icon> -->
+        </div>
+        <div class="main">
+            <form action="">
+                <div><ion-icon name="person1-outline"></ion-icon><input type="text" name="categoryName" #focused [(ngModel)]="data.name"
+                        placeholder="Enter Category Name" required></div>
+                <div><ion-icon name="description-outline"></ion-icon><input type="text" name="categoryDescription" [(ngModel)]="data.description"
+                        placeholder="Enter Description" required></div>
+                <div mat-dialog-actions>
+                    <button type="submit" [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</section>

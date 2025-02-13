@@ -20,16 +20,14 @@ export class InvoiceComponent implements OnInit {
   total: any;
   table: any;
   invoiceID!:string;
-
   currentDate = new Date();
+  
   constructor(private _route: ActivatedRoute, private _order: FoodItemService, private route: Router) {
-    
   }
 
   ngOnInit(): void {
     this.invoiceID=this.generateInvoiceNumber();
     this.someAsyncFunction();
-
   }
 
 

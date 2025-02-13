@@ -1,0 +1,281 @@
+/* -------------------- main content */
+
+
+.main-content {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    min-height: 100vh;
+    padding: 1rem;
+}
+.main-content .content{
+    margin-bottom: 1rem;
+}
+
+.main-content .top-header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 2rem;
+    background-color: white;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-content .top-header .indesktop{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inmobile{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border-radius: 20px;
+    margin-top: 1rem;
+    border: 3px solid #7C5CFC;
+    overflow: hidden;
+    display: none !important;
+}
+
+.inmobile input[type="text"] {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    /* min-width: 300px; */
+    width: 95%;
+}
+
+.inmobile button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0rem 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #7C5CFC;
+}
+
+.inmobile button ion-icon {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+}
+
+.main-content .top-header .searchbar {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 3px solid #7C5CFC;
+    overflow: hidden;
+
+}
+
+.main-content .top-header .searchbar input[type="text"] {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    min-width: 300px;
+}
+
+.main-content .top-header .searchbar button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0rem 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #7C5CFC;
+}
+
+.main-content .top-header .searchbar button ion-icon {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+}
+
+.main-content .content .table-group {
+    background-color: white;
+    border-radius: 5px;
+    padding: 2rem;
+}
+
+.main-content .content .table-group .head {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(215, 210, 210);
+}
+
+.main-content .content .table-group .head .btn-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.shorting {
+    margin-right: 1rem;
+    padding: .5rem 1rem;
+    border: 2px solid #7C5CFC;
+    outline: none;
+    background: none;
+    color: #7C5CFC;
+}
+
+.shorting>option {
+    color: black;
+}
+
+.main-content .content .table-group>div .table-identity {
+    width: 100%;
+    height: auto;
+}
+
+.main-content .content .table-group>div .table-identity ul {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid rgb(215, 210, 210);
+
+}
+
+.main-content .content .table-group>div .table-identity ul li {
+    display: flex;
+    align-items: center;
+}
+
+.main-content .content .table-group>div .table-identity ion-icon {
+    font-size: 1.5rem;
+    margin-right: .5rem;
+}
+
+.main-content .content .table-group>div .table-identity li:nth-child(1) ion-icon {
+    color: gray;
+}
+
+.main-content .content .table-group>div .table-identity li:nth-child(2) ion-icon {
+    color: blue;
+}
+
+.main-content .content .table-group>div .table-identity li:nth-child(3) ion-icon {
+    color: green;
+}
+
+.main-content .content .table-group>div .table-identity li:nth-child(4) ion-icon {
+    color: red;
+}
+.main-content .content .table-group>div .table-identity li:nth-child(5) ion-icon {
+    color: yellow;
+}
+
+.main-content .content .table-group .tables {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    justify-content: start;
+    padding: 1rem 0;
+}
+
+.main-content .content .table-group .tables .table {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    cursor: pointer;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: .5rem .5rem;
+}
+h1 {
+    margin: 0 !important;
+  font-weight: normal;
+
+}
+.main-content .content .table-group .tables .table h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .inmobile{
+        display: flex !important;
+    }
+    .main-content .top-header .searchbar {
+        display: none;
+    }
+    .dashboard-layout .container #sidebar {
+        background: white;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        max-width: 270px;
+        height: 100vh;
+        padding: 20px 0;
+        -webkit-box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
+        box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
+        overflow-y: scroll;
+        -ms-scroll-chaining: none;
+        overscroll-behavior: contain;
+        visibility: hidden;
+        -webkit-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: 0.5s ease;
+        z-index: 20;
+    }
+
+    .dashboard-layout .container #sidebar.active {
+        left: 0;
+        visibility: visible;
+      }
+
+    .open-btn,
+    .close-btn {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .main-content .top-header .searchbar input[type="text"] {
+        min-width: auto;
+    }
+    .main-content .content .table-group>div .table-identity {
+       display: none;
+    } 
+    .main-content .content .table-group .head {
+        flex-direction: column;
+    } 
+    .main-content .content .table-group .head h1{
+        width: 100%;
+        text-align: center;
+    }
+    .main-content .content .table-group .head .btn-group {
+       padding-top: 1rem;
+    }
+    .main-content .content .table-group {
+        padding: 2rem 1rem;
+    }  
+}
