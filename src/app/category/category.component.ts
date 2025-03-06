@@ -5,12 +5,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateCategoryComponent } from '../pages/create-category/create-category.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UpdateCategoryComponent } from '../pages/update-category/update-category.component';
 
 export interface PeriodicElement {
   name: string;
   id: number;
   description: number;
   action: string;
+}
+export interface categoryStructure {
+  id: number;
+  name: string;
+  description: string;
 }
 
 
@@ -28,6 +34,7 @@ export class CategoryComponent implements OnInit {
   cPhoneNo: any;
   name: any;
   description: any;
+
   constructor(private CategoryService : ManageCategoryService,private _snack: MatSnackBar, public _dialog: MatDialog,private _route:Router){}
   displayedColumns: string[] = ['Id', 'Name', 'Description', 'Action'];
 
@@ -61,46 +68,127 @@ export class CategoryComponent implements OnInit {
   }
 
   CreateCategory() {
-
     const dialogRef = this._dialog.open(CreateCategoryComponent, {
-            data: { name: this.name, phone: this.cPhoneNo, address: this.description },
+      data: { name: this.name, description: this.description },
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      // If no result is returned from the dialog, simply return.
+      if (!result) {
+        return;
+      }
+  
+      // Call createCategory and handle the promise response.
+      this.CategoryService.createCategory(result)
+        .then((response: any) => {
+          // Check if response is an array with at least one element.
+          if (response && Array.isArray(response) && response.length > 0) {
+            const newCategory: categoryStructure = response[0];
+            // Push the newly created category into your FilterCateogories array.
+            this.FilterCateogories = [...this.FilterCateogories, newCategory];
+            this._snack.open(`${newCategory.name} Category created Successfully`, '', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          } else {
+            // In case the response format is unexpected or empty.
+            this._snack.open(`${this.name} Category was not created`, '', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error creating category:', error);
+          this._snack.open(`${this.name} Category creation failed`, '', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
           });
-    // if (this.orderList.length != 0) {
-    //   const dialogRef = this._dialog.open(CustomerDetailComponent, {
-    //     data: { name: this.cName, phone: this.cPhoneNo, address: this.cAddress },
-    //   });
-      dialogRef.afterClosed().subscribe((result) => {
+        });
+    });
+  }
 
-        // this.cName = result.name;
-        // this.cPhoneNo = result.phone;
-        // this.cAddress = result.address;
-        // console.log(this.cName);
-    //     // const printContents = document.getElementById("customer-invoice")!.innerHTML;
-    //     // const originalContents = document.body.innerHTML;
-    //     // document.body.innerHTML = printContents;
-    //     // this.show = !this.show;
-    //     this.DataOnHold();
-    //     this._route.navigate(["invoice/"+this.cName+"/"+this.cPhoneNo+"/"+this.cAddress+"/"+this.table]);
-          // this._route.navigate([""]);
+  updateCategory(category : any){
+    const dialogRef = this._dialog.open(UpdateCategoryComponent, {
+       data: { name: category.name, description: category.description },
+    });
 
-    //     // if (!this.show) {
-          
-    //     // }
-    //     // document.body.innerHTML = originalContents;
-    //     // window.location.reload();
-    //     // this.show = !this.show;
-      });
+    dialogRef.afterClosed().subscribe((result) => {
+      // If no result is returned from the dialog, simply return.
+      if (!result) {
+        return;
+      }
 
-    // }
-    // else {
-    //   this._snack.open("Please Enter Order Item", "", {
-    //     duration: 2000
-    //   });
-    // }
-
-
+      let data = {id : category.id , name : result.name , description : result.description};
+      // Call createCategory and handle the promise response.
+      this.CategoryService.updateCategory(data)
+        .then((response: any) => {
+          // Check if response is an array with at least one element.
+          if (response && Array.isArray(response) && response.length > 0) {
+            const newCategory: categoryStructure = response[0];
+            
+            this.FilterCateogories = this.FilterCateogories.map(record =>
+              record.id === response[0].id ? newCategory : record
+            );
+            
+            console.log(this.FilterCateogories);
+            this._snack.open(`${newCategory.name} Category Updated Successfully`, '', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          } else {
+            // In case the response format is unexpected or empty.
+            this._snack.open(`${this.name} Category not Updated`, '', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Error creating category:', error);
+          this._snack.open(`${this.name} Category creation failed`, '', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+        });
+    });
 
   }
+
+
+  // CreateCategory() {
+
+  //   const dialogRef = this._dialog.open(CreateCategoryComponent, {
+  //           data: { name: this.name, description: this.description },
+  //         });
+  //     dialogRef.afterClosed().subscribe((result) => {
+  //         console.log(result);
+  //         this.Response = null;
+  //         this.Response = this.CategoryService.createCategory(result);
+
+  //         if (this.Response === null){
+  //           this._snack.open(name + " Category is was not created", '', {
+  //             duration: 3000,
+  //             horizontalPosition: 'center',
+  //             verticalPosition: 'bottom',
+  //           });
+  //         }else{
+  //           this._snack.open(name + " Category created Successfully", '', {
+  //             duration: 3000,
+  //             horizontalPosition: 'center',
+  //             verticalPosition: 'bottom',
+  //           });
+  //           // window.location.reload();
+  //         }
+  //     });
+
+  // }
 
 
 }

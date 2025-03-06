@@ -33,7 +33,7 @@ export class FoodItemService implements OnInit {
             description,
             price
           )
-        `);
+        `).eq('restaurant_id', '1');
 
       if (error) {
         console.error('Error fetching data:', error);
@@ -75,7 +75,7 @@ export class FoodItemService implements OnInit {
             description,
             price
           )
-        `);
+        `).eq('restaurant_id', '1');
 
       if (error) {
         console.error('Error fetching data:', error);
@@ -112,7 +112,7 @@ export class FoodItemService implements OnInit {
             description,
             price
           )
-        `);
+        `).eq('restaurant_id', '1');
 
       if (error) {
         console.error('Error fetching data:', error);

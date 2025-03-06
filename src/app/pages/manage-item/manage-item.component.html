@@ -1,1 +1,30 @@
-<p>Manage Item</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>description</th>
+      <th>price</th>
+      <th>discount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Outer loop: for each category -->
+    <ng-container *ngFor="let category of categories">
+      <!-- Category row (spans all columns) -->
+      <tr>
+        <td colspan="5" style="font-weight: bold;">{{ category.category }}</td>
+      </tr>
+      <!-- Inner loop: for each item in the current category -->
+      <ng-container *ngFor="let item of category.items">
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.discount }}</td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>

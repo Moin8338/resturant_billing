@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { CreateCategoryComponent } from './pages/create-category/create-category.component';
+import { UpdateCategoryComponent } from './pages/update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateCategoryComponent } from './pages/create-category/create-category
     ManageItemComponent,
     TablesComponent,
     CategoryComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    UpdateCategoryComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
